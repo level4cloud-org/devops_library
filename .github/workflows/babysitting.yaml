@@ -1,0 +1,24 @@
+name: babysitting
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs: 
+  build: 
+  runs-on: ubuntu-latest
+  steps:
+    - name: Checkout
+
+  sast: 
+  runs-on: ubuntu-latest
+  steps:
+    - name: Checkout
+
+  package:
+  name: Login to Harbor
+  uses: docker/login-action@v3
+  with:
+    username: mlops_username
+    password: ${{ secrets.HARBOR_TOKEN }}
