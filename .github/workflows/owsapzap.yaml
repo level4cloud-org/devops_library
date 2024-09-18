@@ -1,9 +1,7 @@
 name: zap
 
 on:
-  push:
-  pull_request:
-  workflow_dispatch:
+  workflow_call:
 
 jobs: 
   zap_scan: # For web application
