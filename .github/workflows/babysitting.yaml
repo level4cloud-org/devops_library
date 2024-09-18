@@ -14,7 +14,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
     - name: Example step
-      run: echo "Input param: ${{ inputs.input_param }}"
+      run: echo "Input param is ${{ inputs.input_param }}"
 
   sast: 
   runs-on: ubuntu-latest
