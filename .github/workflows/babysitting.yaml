@@ -9,16 +9,18 @@ on:
 
 jobs: 
   build: 
-  runs-on: ubuntu-latest
-  steps:
-    - name: Checkout
-      uses: actions/checkout@v3
-    - name: Example step
-      run: echo "Input param is ${{ inputs.input_param }}"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Example step
+        run: echo "Input param is ${{ inputs.input_param }}"
 
-  package:
-  name: Login to Harbor
-  uses: docker/login-action@v3
-  with:
-    username: mlops_username
-    password: ${{ secrets.HARBOR_TOKEN }}
+  package: 
+    runs-on: ubuntu-latest
+    steps:
+      - name: Login to Harbor
+        uses: docker/login-action@v3
+        with:
+          username: mlops_username
+          password: ${{ secrets.HARBOR_TOKEN }}
