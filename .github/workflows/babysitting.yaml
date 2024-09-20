@@ -16,11 +16,6 @@ jobs:
     - name: Example step
       run: echo "Input param is ${{ inputs.input_param }}"
 
-  sast: 
-  runs-on: ubuntu-latest
-  steps:
-    - name: Checkout
-
   package:
   name: Login to Harbor
   uses: docker/login-action@v3
