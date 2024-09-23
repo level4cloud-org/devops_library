@@ -1,0 +1,11 @@
+on:
+  workflow_call:
+
+jobs: 
+  build: 
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Input Param
+        run: echo "Input param is ${{ inputs.input_param }}"
