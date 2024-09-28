@@ -10,8 +10,8 @@ jobs:
       - name: Get code
         uses: actions/checkout@v3
 
-      - name: Build
-        uses: ./.github/workflows/build.yaml
+      # - name: Build
+      #   uses: ./.github/workflows/build.yaml
 
       - name: SAST
         uses: ./.github/workflows/sast.yaml
