@@ -13,8 +13,8 @@ jobs:
       # - name: Build
       #   uses: level4cloud-org/devops_library/.github/workflows/build.yaml
 
-      # - name: SAST
-      #   uses: level4cloud-org/devops_library/.github/workflows/sast.yaml
+      - name: SAST
+        uses: level4cloud-org/devops_library/.github/workflows/sast.yaml
 
       # - name: Package
       #   uses: level4cloud-org/devops_library/.github/workflows/package.yaml
