@@ -11,13 +11,13 @@ jobs:
         uses: actions/checkout@v3
 
       # - name: Build
-      #   uses: ./.github/workflows/build.yaml
+      #   uses: level4cloud-org/devops_library/.github/workflows/build.yaml
 
       - name: SAST
-        uses: .github/workflows/sast.yaml
+        uses: level4cloud-org/devops_library/.github/workflows/sast.yaml
 
       - name: Package
-        uses: ./.github/workflows/package.yaml
+        uses: level4cloud-org/devops_library/.github/workflows/package.yaml
 
       - name: Deploy
-        uses: ./.github/workflows/deploy.yaml
+        uses: level4cloud-org/devops_library/.github/workflows/deploy.yaml
