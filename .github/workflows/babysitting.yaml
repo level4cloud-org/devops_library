@@ -5,6 +5,7 @@ on:
 
 jobs: 
   babysitting: 
+    runs-on: ubuntu-latest
     steps:
       - name: Get code
         uses: actions/checkout@v3
@@ -12,11 +13,11 @@ jobs:
       - name: Build
         uses: ./.github/workflows/build.yaml
 
-  # package: 
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Login to Harbor
-  #       uses: docker/login-action@v3
-  #       with:
-  #         username: mlops_username
-  #         password: ${{ secrets.HARBOR_TOKEN }}
+      - name: SAST
+        uses: ./.github/workflows/sast.yaml
+
+      - name: Package
+        uses: ./.github/workflows/package.yaml
+
+      - name: Deploy
+        uses: ./.github/workflows/deploy.yaml
