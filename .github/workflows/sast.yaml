@@ -1,9 +1,11 @@
+name: SAST
+
 on:
   workflow_call:
-  
+
 jobs: 
   build: 
     runs-on: ubuntu-latest
     steps:
       - name: Echo Var
-        run: echo "A variável local é $MY_VAR"
+        run: echo "A variável local é ${{ github.env.MY_VAR }}"
