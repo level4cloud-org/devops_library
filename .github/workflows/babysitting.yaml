@@ -14,7 +14,7 @@ jobs:
       #   uses: ./.github/workflows/build.yaml
 
       - name: SAST
-        uses: ./.github/workflows/sast.yaml
+        uses: .github/workflows/sast.yaml
 
       - name: Package
         uses: ./.github/workflows/package.yaml
