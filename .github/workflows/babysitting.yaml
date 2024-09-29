@@ -14,11 +14,7 @@ jobs:
       #   uses: ./.github/workflows/build.yaml
 
       - name: SAST
-        uses: .github/workflows/sast.yaml@babysitting
-        with:
-          repository: level4cloud-org/devops_library
-          event-type: run-pipeline
-          client-payload: '{"ref": "babysitting"}'
+        uses: level4cloud-org/devops_library/.github/workflows/sast.yaml@babysitting
 
 
       # - name: Package
