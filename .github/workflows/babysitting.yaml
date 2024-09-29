@@ -4,17 +4,14 @@ on:
   workflow_call:
 
 jobs: 
-  babysitting: 
-    runs-on: ubuntu-latest
-    steps:
-      - name: Get code
-        uses: actions/checkout@v3
+  checkout: 
+    uses: actions/checkout@v3
 
       # - name: Build
       #   uses: ./.github/workflows/build.yaml
 
-      - name: SAST
-        uses: level4cloud-org/devops_library/.github/workflows/sast.yaml@babysitting
+  sast:
+    uses: level4cloud-org/devops_library/.github/workflows/sast.yaml@babysitting
 
 
       # - name: Package
