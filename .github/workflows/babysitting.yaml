@@ -4,14 +4,14 @@ on:
   workflow_call:
 
 jobs: 
-  checkout: 
-    runs-on: ubuntu-latest
-    steps:
-      - name: Get code
-        uses: actions/checkout@v3
+  # checkout: 
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Get code
+  #       uses: actions/checkout@v3
 
-      # - name: Build
-      #   uses: ./.github/workflows/build.yaml
+  Build:
+    uses: ./.github/workflows/build.yaml
 
   SAST:
     uses: level4cloud-org/devops_library/.github/workflows/sast.yaml@babysitting
