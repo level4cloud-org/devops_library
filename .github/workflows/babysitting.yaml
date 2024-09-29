@@ -17,11 +17,10 @@ jobs:
     uses: ./.github/workflows/build.yaml
     needs: SAST
 
- 
-
-
-      # - name: Package
-      #   uses: level4cloud-org/devops_library/.github/workflows/package.yaml
-
-      # - name: Deploy
-      #   uses: level4cloud-org/devops_library/.github/workflows/deploy.yaml
+  Package:
+    uses: level4cloud-org/devops_library/.github/workflows/package.yaml
+    needs: Build
+  
+  Deploy:
+    uses: level4cloud-org/devops_library/.github/workflows/deploy.yaml
+    needs: Package
