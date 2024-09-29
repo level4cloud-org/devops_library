@@ -10,11 +10,14 @@ jobs:
   #     - name: Get code
   #       uses: actions/checkout@v3
 
-  Build:
-    uses: ./.github/workflows/build.yaml
-
   SAST:
     uses: level4cloud-org/devops_library/.github/workflows/sast.yaml@babysitting
+  
+  Build:
+    uses: ./.github/workflows/build.yaml
+    needs: SAST
+
+ 
 
 
       # - name: Package
