@@ -4,7 +4,7 @@ on:
   workflow_call:
 
 jobs: 
-  build: 
+  SAST: 
     runs-on: ubuntu-latest
     steps:
       - name: Echo Var
