@@ -11,16 +11,16 @@ jobs:
   #       uses: actions/checkout@v3
 
   SAST:
-    uses: level4cloud-org/devops_library/.github/workflows/sast.yaml@babysitting
+    uses: ./.github/workflows/sast.yaml
   
   Build:
     uses: ./.github/workflows/build.yaml
     needs: SAST
 
   Package:
-    uses: level4cloud-org/devops_library/.github/workflows/package.yaml
+    uses: ./.github/workflows/package.yaml
     needs: Build
   
   Deploy:
-    uses: level4cloud-org/devops_library/.github/workflows/deploy.yaml
+    uses: ./.github/workflows/deploy.yaml
     needs: Package
