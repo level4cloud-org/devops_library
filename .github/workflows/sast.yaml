@@ -9,4 +9,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Echo Var SAST
-        run: echo "A variável local é $input_param"
+        run: echo "A variável local é ${{ inputs.input_param }}"  
