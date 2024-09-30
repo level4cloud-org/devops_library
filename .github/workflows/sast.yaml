@@ -6,4 +6,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Echo Var SAST
-        run: echo "A variável local é ${{ github.env.MY_VAR }}"
+        run: echo "A variável local é $input_param"
