@@ -1,12 +1,15 @@
 on:
   workflow_call:
+    inputs:
+      input_param_2:
+        type: string
 
 jobs: 
   build: 
     runs-on: ubuntu-latest
     steps:
       - name: Echo Var Build
-        run: echo "A variável local é ${{ github.env.MY_VAR }}"
+        run: echo "A variável local é ${{ inputs.input_param_2 }}"
 
       # - name: Get code
       #   uses: actions/checkout@v3

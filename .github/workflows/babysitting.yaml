@@ -5,9 +5,8 @@ on:
     inputs:
       input_param:
         type: string
-
-env:
-  MY_VAR: ${{ github.env.MY_VAR }}
+      input_param_2:
+        type: string
 
 jobs: 
   # checkout: 
@@ -25,7 +24,7 @@ jobs:
     uses: ./.github/workflows/build.yaml
     needs: SAST
     with:
-      MY_VAR: ${{ github.env.MY_VAR }}
+      input_param_2: ${{ inputs.input_param_2 }}
 
   Package:
     uses: ./.github/workflows/package.yaml
