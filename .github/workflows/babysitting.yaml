@@ -21,6 +21,8 @@ jobs:
   Build:
     uses: ./.github/workflows/build.yaml
     needs: SAST
+    with:
+      MY_VAR: ${{ github.env.MY_VAR }}
 
   Package:
     uses: ./.github/workflows/package.yaml
