@@ -2,6 +2,9 @@ name: babysitting
 
 on:
   workflow_call:
+    inputs:
+      input_param:
+        type: string
 
 jobs: 
   # checkout: 
