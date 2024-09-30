@@ -1,5 +1,3 @@
-name: babysitting
-
 on:
   workflow_call:  
 
@@ -7,8 +5,11 @@ jobs:
   package: 
         runs-on: ubuntu-latest
         steps:
-        - name: Login to Harbor
-          uses: docker/login-action@v3
-          with:
-            username: mlops_username
-            password: ${{ secrets.HARBOR_TOKEN }}
+          - name: Echo Var Package
+            run: echo "A variável local é ${{ github.env.MY_VAR }}" 
+
+        # - name: Login to Harbor
+        #   uses: docker/login-action@v3
+        #   with:
+        #     username: mlops_username
+        #     password: ${{ secrets.HARBOR_TOKEN }}
