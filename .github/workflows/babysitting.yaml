@@ -6,6 +6,9 @@ on:
       input_param:
         type: string
 
+env:
+  MY_VAR: 
+
 jobs: 
   # checkout: 
   #   runs-on: ubuntu-latest
