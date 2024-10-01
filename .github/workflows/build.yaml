@@ -1,7 +1,7 @@
 on:
   workflow_call:
     inputs:
-      input_param_2:
+      PROJECT_NAME:
         type: string
 
 jobs: 
@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Echo Var Build
-        run: echo "A variável local é ${{ inputs.input_param_2 }}"
+        run: echo "O nome do projeto é ${{ inputs.PROJECT_NAME }}"
 
       # - name: Get code
       #   uses: actions/checkout@v3
