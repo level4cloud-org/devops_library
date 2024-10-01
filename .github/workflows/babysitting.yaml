@@ -3,9 +3,9 @@ name: babysitting
 on:
   workflow_call:
     inputs:
-      input_param:
+      PROJECT_NAME:
         type: string
-      input_param_2:
+      INPUT_PARAM:
         type: string
 
 jobs: 
@@ -18,13 +18,13 @@ jobs:
   SAST:
     uses: ./.github/workflows/sast.yaml
     with:
-      input_param: ${{ inputs.input_param }}
+      INPUT_PARAM: ${{ inputs.INPUT_PARAM }}
   
   Build:
     uses: ./.github/workflows/build.yaml
     needs: SAST
     with:
-      input_param_2: ${{ inputs.input_param_2 }}
+      PROJECT_NAME: ${{ inputs.PROJECT_NAME }}
 
   Package:
     uses: ./.github/workflows/package.yaml

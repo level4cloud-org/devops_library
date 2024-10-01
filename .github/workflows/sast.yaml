@@ -1,7 +1,7 @@
 on:
   workflow_call:
     inputs:
-      input_param:
+      INPUT_PARAM:
         type: string
 
 jobs: 
@@ -9,4 +9,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Echo Var SAST
-        run: echo "A variável local é ${{ inputs.input_param }}"  
+        run: echo "A variável local é ${{ inputs.INPUT_PARAM }}"  
