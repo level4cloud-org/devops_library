@@ -9,11 +9,6 @@ on:
         type: string
 
 jobs: 
-  # checkout: 
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Get code
-  #       uses: actions/checkout@v3
 
   SAST:
     uses: ./.github/workflows/sast.yaml
