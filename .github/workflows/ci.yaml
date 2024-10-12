@@ -8,13 +8,13 @@ on:
       INPUT_PARAM:
         type: string
 
-jobs: 
+jobs:
 
   SAST:
     uses: ./.github/workflows/sast.yaml
     with:
       INPUT_PARAM: ${{ inputs.INPUT_PARAM }}
-  
+
   Build:
     uses: ./.github/workflows/build.yaml
     needs: SAST
@@ -24,7 +24,11 @@ jobs:
   Package:
     uses: ./.github/workflows/package.yaml
     needs: Build
-  
+
+  Pipelines_OCI:
+    uses: ./.github/workflows/package.yaml
+    needs: Build
+
   Deploy:
     uses: ./.github/workflows/deploy.yaml
     needs: Package
