@@ -21,9 +21,18 @@ jobs:
     with:
       PROJECT_NAME: ${{ inputs.PROJECT_NAME }}
 
+  Tagging_git:
+    uses: ./.github/workflows/tag-git.yaml
+    with:
+      PROJECT_NAME: ${{ inputs.PROJECT_NAME }}
+
   Package:
     uses: ./.github/workflows/package.yaml
     needs: Build
+
+  Tagging_Model:
+    uses: ./.github/workflows/tag-model.yaml
+    needs: Package
 
   Pipelines_OCI:
     uses: ./.github/workflows/package.yaml

@@ -1,0 +1,46 @@
+name: Auto Tag for ML Models
+
+on:
+  workflow_call:
+    inputs:
+      PROJECT_NAME:
+        type: string
+
+jobs:
+  tag:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do repositório
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Obter última tag do modelo
+        id: last_tag
+        run: |
+          MODEL_NAME=${{ inputs.PROJECT_NAME }}
+          LAST_TAG=$(git tag --list "$MODEL_NAME-v*" --sort=-v:refname | head -n 1 || echo "$MODEL_NAME-v0.0.0")
+          echo "Última tag encontrada: $LAST_TAG"
+          echo "LAST_TAG=$LAST_TAG" >> $GITHUB_ENV
+
+      - name: Gerar próxima versão
+        id: new_version
+        run: |
+          TAG=${{ env.LAST_TAG }}
+
+          # Extrair números da versão (vX.Y.Z)
+          MAJOR=$(echo $TAG | cut -d'.' -f1 | tr -d 'a-z' | tr -d '-')
+          MINOR=$(echo $TAG | cut -d'.' -f2)
+          PATCH=$(echo $TAG | cut -d'.' -f3)
+
+          # Incrementa o PATCH
+          NEW_PATCH=$((PATCH + 1))
+          NEW_TAG="sales-predictor-v$MAJOR.$MINOR.$NEW_PATCH"
+
+          echo "Nova versão gerada: $NEW_TAG"
+          echo "NEW_TAG=$NEW_TAG" >> $GITHUB_ENV
+
+      - name: Criar e enviar nova tag
+        run: |
+          git tag -a ${{ env.NEW_TAG }} -m "Novo modelo treinado: ${{ env.NEW_TAG }}"
+          git push origin ${{ env.NEW_TAG }}
