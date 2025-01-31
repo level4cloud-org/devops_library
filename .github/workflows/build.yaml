@@ -4,8 +4,8 @@ on:
       PROJECT_NAME:
         type: string
 
-jobs: 
-  build: 
+jobs:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Echo Var Build
@@ -13,17 +13,17 @@ jobs:
 
       # - name: Get code
       #   uses: actions/checkout@v3
-      
+
       # - name: Configurar Python
       #   uses: actions/setup-python@v4
       #   with:
       #     python-version: '3.11'
-      
+
       # - name: Instalar dependências
       #   run: |
       #     python -m venv .venv
       #     pip install -r requirements.txt
-      
+
       # - name: Logar no Docker Hub ou Harbor (Padrão Claro)
       #   run: echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
 
