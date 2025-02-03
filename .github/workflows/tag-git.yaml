@@ -18,8 +18,20 @@ jobs:
       - name: Obter última tag do modelo
         id: last_tag
         run: |
-          MODEL_NAME=${{ inputs.PROJECT_NAME }}
-          LAST_TAG=$(git tag --list "$MODEL_NAME-v*" --sort=-v:refname | head -n 1 || echo "$MODEL_NAME-v0.0.0")
+          MODEL_NAME="${{ inputs.PROJECT_NAME }}"
+
+          if [ -z "$MODEL_NAME" ]; then
+            echo "Erro: PROJECT_NAME não foi definido!" >&2
+            exit 1
+          fi
+
+          LAST_TAG=$(git tag --list "${MODEL_NAME}-v*" --sort=-v:refname | head -n 1)
+
+          # Se LAST_TAG estiver vazio, definir a versão inicial
+          if [ -z "$LAST_TAG" ]; then
+            LAST_TAG="${MODEL_NAME}-v0.0.0"
+          fi
+
           echo "Última tag encontrada: $LAST_TAG"
           echo "LAST_TAG=$LAST_TAG" >> $GITHUB_ENV
 
