@@ -7,7 +7,7 @@ on:
         type: string
 
 jobs:
-  tag:
+  Tagging_git:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout do repositório
