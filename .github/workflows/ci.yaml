@@ -5,6 +5,8 @@ on:
     inputs:
       PROJECT_NAME:
         type: string
+      MODEL_NAME:
+        type: string
       INPUT_PARAM:
         type: string
 
