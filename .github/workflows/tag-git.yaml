@@ -54,5 +54,7 @@ jobs:
 
       - name: Criar e enviar nova tag
         run: |
+          git config --global user.email "pipeline@github.com"
+          git config --global user.name "pipeline DevOps"
           git tag -a ${{ env.NEW_TAG }} -m "Novo modelo treinado: ${{ env.NEW_TAG }}"
           git push origin ${{ env.NEW_TAG }}
