@@ -47,7 +47,7 @@ jobs:
 
           # Incrementa o PATCH
           NEW_PATCH=$((PATCH + 1))
-          NEW_TAG="sales-predictor-v$MAJOR.$MINOR.$NEW_PATCH"
+          NEW_TAG="$TAG-v$MAJOR.$MINOR.$NEW_PATCH"
 
           echo "Nova versão gerada: $NEW_TAG"
           echo "NEW_TAG=$NEW_TAG" >> $GITHUB_ENV
