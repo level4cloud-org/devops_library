@@ -3,6 +3,9 @@ on:
     inputs:
       INPUT_PARAM:
         type: string
+    secrets:
+      SNYK_TOKEN:
+        required: true
 
 jobs:
   sast:
@@ -23,7 +26,7 @@ jobs:
       - name: Run Snyk Scan
         uses: snyk/actions/node@master
         env:
-          SNYK_TOKEN: ${{ inputs.SNYK_TOKEN }}
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
           args: test --severity-threshold=high
 

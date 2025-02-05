@@ -9,11 +9,16 @@ on:
         type: string
       INPUT_PARAM:
         type: string
+    secrets:
+      SNYK_TOKEN:
+        required: true
 
 jobs:
 
   SAST:
     uses: ./.github/workflows/sast_js.yaml
+    secrets:
+      SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
 
   # Build:
   #   uses: ./.github/workflows/build.yaml
