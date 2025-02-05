@@ -5,9 +5,9 @@ on:
         type: string
 
 jobs:
-  Sonarqube:
-    name: SonarQube
+  sast:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -20,13 +20,14 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      - name: Run SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@master
+      - name: Run Snyk Scan
+        uses: snyk/actions/node@master
         env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
-          args: >
-            -Dsonar.organization=level4cloud-org
-            -Dsonar.projectKey=level4cloud-org_devops_library
-            -Dsonar.sources=.
-            -Dsonar.exclusions=node_modules/**
+          args: test --severity-threshold=high
+
+      - name: Upload result to GitHub Code Scanning
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: snyk.sarif
