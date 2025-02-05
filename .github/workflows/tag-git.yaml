@@ -41,7 +41,7 @@ jobs:
           TAG=${{ env.LAST_TAG }}
 
           # Extrair números da versão (vX.Y.Z)
-          MAJOR=$(echo $TAG | cut -d'.' -f1 | tr -d 'a-z' | tr -d '-')
+          MAJOR=$(echo $TAG | cut -d'.' -f1 | tr -d 'a-z' | tr -d 'A-Z' | tr -d '-')
           MINOR=$(echo $TAG | cut -d'.' -f2)
           PATCH=$(echo $TAG | cut -d'.' -f3)
 

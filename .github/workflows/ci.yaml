@@ -13,33 +13,31 @@ on:
 jobs:
 
   SAST:
-    uses: ./.github/workflows/sast.yaml
-    with:
-      INPUT_PARAM: ${{ inputs.INPUT_PARAM }}
+    uses: ./.github/workflows/sast_js.yaml
 
-  Build:
-    uses: ./.github/workflows/build.yaml
-    needs: SAST
-    with:
-      PROJECT_NAME: ${{ inputs.PROJECT_NAME }}
+  # Build:
+  #   uses: ./.github/workflows/build.yaml
+  #   needs: SAST
+  #   with:
+  #     PROJECT_NAME: ${{ inputs.PROJECT_NAME }}
 
-  Tagging_git:
-    uses: ./.github/workflows/tag-git.yaml
-    with:
-      PROJECT_NAME: ${{ inputs.PROJECT_NAME }}
+  # Tagging_git:
+  #   uses: ./.github/workflows/tag-git.yaml
+  #   with:
+  #     PROJECT_NAME: ${{ inputs.PROJECT_NAME }}
 
-  Package:
-    uses: ./.github/workflows/package.yaml
-    needs: Build
+  # Package:
+  #   uses: ./.github/workflows/package.yaml
+  #   needs: Build
 
-  # Tagging_Model:
-  #   uses: ./.github/workflows/tag-model.yaml
+  # # Tagging_Model:
+  # #   uses: ./.github/workflows/tag-model.yaml
+  # #   needs: Package
+
+  # Pipelines_OCI:
+  #   uses: ./.github/workflows/package.yaml
+  #   needs: Build
+
+  # Deploy:
+  #   uses: ./.github/workflows/deploy.yaml
   #   needs: Package
-
-  Pipelines_OCI:
-    uses: ./.github/workflows/package.yaml
-    needs: Build
-
-  Deploy:
-    uses: ./.github/workflows/deploy.yaml
-    needs: Package
