@@ -1,9 +1,9 @@
 name: Auto Tag for ML Models
 
-on:
-  push:
-    branches:
-      - babysitting
+# on:
+#   push:
+#     branches:
+#       - babysitting
 
 jobs:
   tag:
