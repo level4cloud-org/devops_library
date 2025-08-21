@@ -2,7 +2,7 @@ name: Reusable steps (AKA composite action)
 description: Demonstrate how to use reusable steps in a workflow
 # Schema: https://json.schemastore.org/github-action.json
 
-# Runs on the same runner and same work area as the main workflow.
+# Runs on the same runner and same work area as the main workflow.#
 # No need to use 'build artifacts' to share files with the main workflow.
 # Env variables are inherited.
 # Secrets are not available -- must be passed explicitly as inputs or env vars.
