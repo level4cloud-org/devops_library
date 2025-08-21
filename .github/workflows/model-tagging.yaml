@@ -28,9 +28,19 @@ jobs:
           TAG=${{ env.LAST_TAG }}
 
           # Extrair números da versão (vX.Y.Z)
-          MAJOR=$(echo $TAG | cut -d'.' -f1 | tr -d 'a-z' | tr -d '-')
-          MINOR=$(echo $TAG | cut -d'.' -f2)
-          PATCH=$(echo $TAG | cut -d'.' -f3)
+          REGEX="sales-predictor-v([03]}"
+          else
+            MAJOR="0"
+            MINOR="0"
+            PATCH="0"
+          fi
+
+          -9]+)\.([0-9]+)\.([0-9]+)"
+          if [[ $TAG =~ $REGEX ]]; then
+          NEW_PATCH=$((PATCH + 1))
+          NEW_TAG="sales-predictor-v$MAJOR MAJOR="${BASH_REMATCH[1]}"
+            MINOR="${BASH_REM.$MINOR.$NEW_PATCH"
+          echo "NEW_TAG=$NEW_TAG" >> $GITHUB_ENV
 
           # Incrementa o PATCH
           NEW_PATCH=$((PATCH + 1))
